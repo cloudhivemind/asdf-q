@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+
+release_path="https://api.github.com/repos/aws/amazon-q-developer-cli/releases"
+
+versions=$(curl -s $release_path | grep -oP '"tag_name": "\K(.*)(?=")')
+echo "$versions"

@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+# Only support Linux for now
+if [[ "$(uname -s)" != "Linux" ]]; then
+  echo "This script only supports Linux."
+  exit 1
+fi
+
+[ -n "$ASDF_INSTALL_VERSION" ] && echo "Installing Q version: $ASDF_INSTALL_VERSION" || echo "Installing latest Q version"
+[ -n "$ASDF_DOWNLOAD_PATH" ] || (echo "Missing ASDF_DOWNLOAD_PATH" >&2 && exit 1)
+
+DOWNLOAD_URL=https://desktop-release.q.us-east-1.amazonaws.com/${ASDF_INSTALL_VERSION:-latest}/q-$(uname -m)-linux.zip
+
+echo "Downloading Q from: $DOWNLOAD_URL to $ASDF_DOWNLOAD_PATH/q.zip"
+curl --proto "=https" --tlsv1.2 -sSf "$DOWNLOAD_URL" -o $ASDF_DOWNLOAD_PATH/q.zip

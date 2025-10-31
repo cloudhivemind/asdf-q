@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+[ -n "$ASDF_INSTALL_PATH" ] || (echo "Missing ASDF_INSTALL_PATH" >&2 && exit 1)
+[ -n "$ASDF_DOWNLOAD_PATH" ] || (echo "Missing ASDF_DOWNLOAD_PATH" >&2 && exit 1)
+
+SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
+
+mkdir -p "${ASDF_INSTALL_PATH}/bin"
+toolPath="${ASDF_INSTALL_PATH}/bin/q"
+echo "Installing Q to: ${toolPath}"
+
+cd "${ASDF_DOWNLOAD_PATH}"
+
+unzip -o q.zip
+install -m 755 ./q/bin/q "${toolPath}"
+install -m 755 ./q/bin/qterm "${toolPath}"
+install -m 755 ./q/bin/qchat "${toolPath}"
