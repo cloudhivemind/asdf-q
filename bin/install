@@ -6,8 +6,8 @@ set -e
 
 SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 
-mkdir -p "${ASDF_INSTALL_PATH}/bin"
-toolPath="${ASDF_INSTALL_PATH}/bin/q"
+toolPath="${ASDF_INSTALL_PATH}/bin/"
+mkdir -p $toolPath
 echo "Installing Q to: ${toolPath}"
 
 cd "${ASDF_DOWNLOAD_PATH}"
