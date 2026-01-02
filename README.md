@@ -33,3 +33,4 @@ mise install q@1.19.3
 ```bash
 q --version
 ```
+
