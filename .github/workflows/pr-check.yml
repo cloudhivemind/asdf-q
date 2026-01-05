@@ -4,9 +4,6 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - opened
-      - ready_for_review
 
 jobs:
   test-setting:
@@ -14,4 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          exit 1
+          exit 0
+
